@@ -6,6 +6,7 @@
     "paths": {
       "@app/*": ["app/*"],
       "@env/*": ["environments/*"],
+      "@service/*": ["app/service/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
