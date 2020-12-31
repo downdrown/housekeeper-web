@@ -1,0 +1,20 @@
+.background {
+  height: 100%;
+  width: 100%;
+  background: whitesmoke;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+}
+
+.loginCard {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 400px;
+}
+
+.loginCard mat-form-field {
+  width: 90%;
+}
