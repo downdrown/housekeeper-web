@@ -3,26 +3,20 @@ import { AppComponent } from '@app/app.component';
 import { AppRoutingModule } from '@app/app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { ComponentsModule } from '@app/components/components.module';
 import { HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from '@app/material.module';
-import { LoginComponent } from '@app/components/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
-import { NavigationComponent } from '@app/components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    NavigationComponent
+    AppComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    ComponentsModule,
     HttpClientModule,
-    MaterialModule,
-    ReactiveFormsModule,
     LayoutModule
   ],
   providers: [HttpClientModule],
