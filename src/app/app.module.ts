@@ -1,23 +1,31 @@
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from '@app/app.component';
+import { AppRoutingModule } from '@app/app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { HeaderComponent } from './components/header/header.component';
-import { MaterialModule } from './material.module';
+import { HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from '@app/material.module';
+import { LoginComponent } from '@app/components/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutModule } from '@angular/cdk/layout';
+import { NavigationComponent } from '@app/components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    LoginComponent,
+    NavigationComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    MaterialModule
+    HttpClientModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    LayoutModule
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
