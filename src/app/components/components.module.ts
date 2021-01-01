@@ -4,12 +4,14 @@ import { LoginComponent } from '@app/components/login/login.component';
 import { MaterialModule } from '@app/material.module';
 import { NavigationComponent } from '@app/components/navigation/navigation.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   declarations: [
     LoginComponent,
