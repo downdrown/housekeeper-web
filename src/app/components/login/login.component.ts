@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '@service/authentication.service';
+import { UserService } from '@service/user.service';
+import { ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +13,15 @@ export class LoginComponent {
 
   loginForm: FormGroup;
   errorMsg: string | undefined;
+  returnUrl: string;
 
   constructor(private formBuilder: FormBuilder,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              private userService: UserService,
+              private route: ActivatedRoute,
+              private router: Router) {
+
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
 
     this.loginForm = this.formBuilder.group({
       username: [null, Validators.required],
@@ -34,8 +42,12 @@ export class LoginComponent {
 
     this.authenticationService.authenticate(username, password)
       .then(
-        () => {},
-        error => {
+        () => {
+          // Success
+          this.router.navigateByUrl(this.returnUrl);
+        },
+        () => {
+          // Error
           this.errorMsg = 'Login failed.';
           this.loginForm.reset();
           this.loginForm.setErrors(null);
