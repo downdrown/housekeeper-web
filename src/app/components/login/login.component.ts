@@ -21,7 +21,7 @@ export class LoginComponent {
               private route: ActivatedRoute,
               private router: Router) {
 
-    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || 'home';
 
     this.loginForm = this.formBuilder.group({
       username: [null, Validators.required],
