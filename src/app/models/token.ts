@@ -1,6 +1,18 @@
-/* tslint:disable:variable-name */
 export class Token {
-  access_token: string | undefined;
-  refresh_token: string | undefined;
-  expires_in: number | undefined;
+
+  constructor(username: string, permissions: string[]) {
+    this.#_username = username;
+    this.#_permissions = permissions;
+  }
+
+  #_username: string;
+  #_permissions: string[];
+
+  get username(): string {
+    return this.#_username;
+  }
+
+  get permissions(): string[] {
+    return this.#_permissions;
+  }
 }
