@@ -12,7 +12,7 @@
       </button>
       <span>Housekeeper</span>
       <span class="spacer"></span>
-      <mat-label>Lorem <strong>Ipsum</strong></mat-label>
+      <mat-label>&nbsp;{{user?.firstName}}&nbsp;<strong>{{user?.lastName}}</strong></mat-label>
       <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="!(isHandset$ | async)">
         <mat-icon>more_vert</mat-icon>
       </button>
@@ -23,5 +23,6 @@
         </button>
       </mat-menu>
     </mat-toolbar>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
