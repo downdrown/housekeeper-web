@@ -11,6 +11,7 @@
               <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
                 Username is <strong>required</strong>
               </mat-error>
+              <mat-icon color="primary" matSuffix>account_circle</mat-icon>
             </mat-form-field>
           </div>
         </div>
@@ -21,6 +22,7 @@
               <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
                 Password is <strong>required</strong>
               </mat-error>
+              <mat-icon color="primary" matSuffix>lock</mat-icon>
             </mat-form-field>
           </div>
         </div>

@@ -10,7 +10,7 @@
       <button mat-icon-button type="button" aria-label="Toggle sidenav" (click)="drawer.toggle()" *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Housekeeper</span>
+      <span>House<strong>keeper</strong></span>
       <span class="spacer"></span>
       <mat-label>&nbsp;{{user?.firstName}}&nbsp;<strong>{{user?.lastName}}</strong></mat-label>
       <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="!(isHandset$ | async)">
