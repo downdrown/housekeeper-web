@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import { Token } from '@app/models/token';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { Observable } from 'rxjs';
 
+const userdataCookie = 'USERDATA';
 const serviceEndpoint = environment.apiEndpoint + '/auth/token';
 
 @Injectable({
@@ -10,10 +13,10 @@ const serviceEndpoint = environment.apiEndpoint + '/auth/token';
 })
 export class AuthenticationService {
 
-  #tokenFetchedAt: Date | undefined;
-  #token: Token | undefined;
+  authenticated: Observable<boolean> = new Observable<boolean>(observer => observer.next(this.isAuthenticated()));
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+              private cookieService: CookieService) { }
 
   authenticate(username: string, password: string): Promise<void> {
 
@@ -26,9 +29,7 @@ export class AuthenticationService {
       this.httpClient.post<Token>(serviceEndpoint + '/authenticate', jsonBody, {headers})
         .subscribe(
           data => {
-            this.#tokenFetchedAt = new Date();
-            this.#token = data;
-            console.debug('... SUCCESS - Successfully fetched a token object from the api.');
+            console.debug('... SUCCESS - Successfully authenticated.');
             resolve();
           },
           error => {
@@ -39,11 +40,17 @@ export class AuthenticationService {
   }
 
   logout(): void {
-    this.#tokenFetchedAt = undefined;
-    this.#token = undefined;
+    this.httpClient.post<Token>(serviceEndpoint + '/logout', null).subscribe();
   }
 
   isAuthenticated(): boolean {
-    return this.#token !== undefined;
+    return this.cookieService.check(userdataCookie);
+  }
+
+  getToken(): Token {
+    const encodedUserData = this.cookieService.get(userdataCookie);
+    const decodedUserData = atob(encodedUserData);
+    const parsedUserData = JSON.parse(decodedUserData);
+    return new Token(parsedUserData.sub, parsedUserData.permissions);
   }
 }
