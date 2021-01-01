@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from '@app/components/login/login.component';
+import { HomeComponent } from '@app/components/home/home.component';
 import { NavigationComponent } from '@app/components/navigation/navigation.component';
-import { AuthenticationGuard } from '@app/guard/authentication.guard';
+import { AuthenticationGuard as AuthGuard } from '@app/guard/authentication.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', component: NavigationComponent, canActivate: [AuthenticationGuard], children:
-    [
-      // { path: 'child-a', component: ChildAComponent }
+  { path: '', component: NavigationComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
+    children: [
+       { path: 'home', component: HomeComponent }
     ]
   },
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({
