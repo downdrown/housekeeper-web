@@ -1,3 +1,4 @@
+import { Gender } from './genders';
 import { Role } from './roles';
 
 export class User {
@@ -5,6 +6,7 @@ export class User {
   username: string | undefined;
   firstName: string | undefined;
   lastName: string | undefined;
+  gender: Gender | undefined;
   role: Role | undefined;
   lastLogin: Date | undefined;
   registrationPassword: string | undefined;
