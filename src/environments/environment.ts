@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: 'http://localhost:4200/api'
+  apiEndpoint: 'http://housekeeper.dev.local:4200/api'
 };
 
 /*
