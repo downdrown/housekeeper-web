@@ -2,31 +2,23 @@
   height: 100%;
 }
 
-.sidenav {
+.sidenav.handset {
   width: 100%;
+}
+.sidenav.tablet {
+  width: 30%;
+  max-width: 300px;
+}
+.sidenav.web {
+  width: 300px;
 }
 
 .mat-toolbar.mat-primary {
-  position: fixed;
-  z-index: 10;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
+  z-index: 1;
 }
 
 .spacer {
   flex: 1 1 auto;
-}
-
-mat-sidenav {
-  margin-top: 55px;
-}
-
-mat-sidenav-content {
-  overflow: auto;
-  position: absolute;
-  top: 64px;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
